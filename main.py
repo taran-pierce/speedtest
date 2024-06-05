@@ -1,11 +1,8 @@
 import speedtest
-import asyncio
 import os
 
 st = speedtest.Speedtest()
-
 server_names = []
-
 st.get_servers(server_names)
 
 def clear_screen():
@@ -15,6 +12,9 @@ def clear_screen():
     os.system('clear')
 
 def get_download_speed():
+  """
+  Calculates download speed using speedtest-cli
+  """
   print("\n")
   print("Testing your download speed...\n")
 
@@ -22,9 +22,12 @@ def get_download_speed():
 
   megabytes = round(calculate_megabytes(bytes), 2)
 
-  return f"{megabytes} /Mbps"
+  return f"{megabytes} / Mbps"
 
 def get_upload_speed():
+  """
+  Calculates upload speed using speedtest-cli
+  """
   print("\n")
   print("Testing your upload speed...\n")
 
@@ -32,9 +35,12 @@ def get_upload_speed():
 
   megabytes = round(calculate_megabytes(bytes), 2)
 
-  return f"{megabytes} /Mbps"
+  return f"{megabytes} / Mbps"
 
 def get_ping():
+  """
+  Calculates ping using speedtest-cli
+  """
   print("\n")
   print("Calculating your ping...\n")
 
@@ -67,21 +73,20 @@ clear_screen()
 
 if user_option == 1:
   print("\n")
-  print("Download speed it is!")
-  print("It may take a few moments while it tests your download speed...\n")
 
-  bytes = st.download()
+  download = get_download_speed()
 
-  megabytes = round(calculate_megabytes(bytes), 2)
-
-  print(f"You have a Download speed of: {megabytes}/Mbps")
+  print(f"Download: {download}")
 elif user_option == 2:
-  print("Upload speed it is!")
-  testing = st.upload()
+  print("\n")
 
-  print(testing)
+  upload = get_upload_speed()
+  print(f"Upload: {upload}")
 elif user_option == 3:
-  asyncio.run(get_ping())
+  print("\n")
+  ping = get_ping()
+
+  print(f"Ping: {ping}")
 elif user_option == 4:
   print("\n")
 

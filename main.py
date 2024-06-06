@@ -2,6 +2,7 @@
 DB_USERNAME = os.getenv("USER_NAME")
 DB_PASSWORD = os.getenv("USER_PASSWORD")
 
+
 # import dependencies
 import speedtest
 import os

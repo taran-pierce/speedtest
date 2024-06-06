@@ -28,6 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
   "python-speedtest.azurewebsites.net",
+  "http://0.0.0.0:8000",
 ]
 
 # Application definition

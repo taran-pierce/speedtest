@@ -1,0 +1,16 @@
+<nav>
+  <ul>
+    {% url 'index' as index_url %}
+    <li>{% if request.path == index_url %}Home
+      {% else %}
+        <a href="{% url 'index' %}">Home</a>
+      {% endif %}
+    </li>
+    {% url 'about' as about_url %}
+    <li>{% if request.path == about_url %}About
+      {% else %}
+        <a href="{% url 'about' %}">About</a>
+      {% endif %}
+    </li>
+  </ul>
+</nav>

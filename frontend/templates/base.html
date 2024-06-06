@@ -1,0 +1,15 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" \>
+    <title>{% block title %}Speed Test{% endblock %}</title>
+  </head>
+  <body>
+    {% include 'components/navigation.html' %}
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>

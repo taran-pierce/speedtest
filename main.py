@@ -1,11 +1,15 @@
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # config data
 DB_USERNAME = os.getenv("USER_NAME")
 DB_PASSWORD = os.getenv("USER_PASSWORD")
 
-
 # import dependencies
 import speedtest
-import os
 import pymongo
 import datetime
 import certifi

@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 SECRET = os.getenv("SECRET_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +32,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
   "python-speedtest.azurewebsites.net",
-  "http://0.0.0.0:8000",
+  "0.0.0.0:8000",
+  "127.0.0.1:8000"
 ]
 
 # Application definition

@@ -29,7 +29,9 @@ SECRET_KEY = SECRET
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["python-speedtest.azurewebsites.net"]
+ALLOWED_HOSTS = [
+  "python-speedtest.azurewebsites.net",
+]
 
 # Application definition
 

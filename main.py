@@ -1,5 +1,13 @@
 import speedtest
 import os
+import pymongo
+import datetime
+
+client = pymongo.MongoClient('mongodb://localhost:27017/')
+
+db = client["speedtest"]
+
+collection = db["results"]
 
 st = speedtest.Speedtest()
 server_names = []
@@ -56,6 +64,21 @@ def calculate_megabytes(bytes):
 
   return megabytes
 
+def update_db(type, data):
+  document = {
+    "type": type,
+    "speed": data,
+    "date": datetime.datetime.now().date().strftime("%m-%d-%Y"),
+    "time": datetime.datetime.now().time().strftime("%I:%H:%M"),
+  }
+
+  print("Inserting the following data...\n")
+
+  for data in document:
+    print(f"{data} - {document[data]}")
+
+  collection.insert_one(document)
+
 user_option = int(input(r'''What type of internet speed do you want to test?
                         
 1 - Download
@@ -66,25 +89,36 @@ user_option = int(input(r'''What type of internet speed do you want to test?
                         
 4 - All three
                         
+5 - Print previous results
+                        
 Enter the number for your choice: 
 '''))
 
 clear_screen()
+
+results = {}
 
 if user_option == 1:
   print("\n")
 
   download = get_download_speed()
 
+  update_db("Download", download)
+
   print(f"Download: {download}")
 elif user_option == 2:
   print("\n")
 
   upload = get_upload_speed()
+
+  update_db("Upload", upload)
+
   print(f"Upload: {upload}")
 elif user_option == 3:
   print("\n")
   ping = get_ping()
+
+  update_db("Ping", ping)
 
   print(f"Ping: {ping}")
 elif user_option == 4:
@@ -97,8 +131,31 @@ elif user_option == 4:
   }
 
   for result in results:
-    print(f"{result}: {results[result]}")
+    print(f"{result}: {results[result]}\n")
+    update_db(result, results[result])
+
+elif user_option == 5:
+  print(f"Previous Results\n")
+  
+  try:
+    documents = collection.find()
+
+    for document in documents:
+      print(f"""
+        Date: {document["date"]}
+        Time: {document["time"]}
+        Type: {document["type"]}
+        Speed: {document["speed"]}
+      """)
+
+
+  except pymongo.errors.PyMongoError as e:
+    print(f"An error occured: {e}")
 else:
   print(f"Invalid Option: {user_option}.")
-  print("Please enter: 1, 2, 3, or 4")
+  print("Please enter: 1, 2, 3, 4, or 5")
 
+client.close()
+
+print("\n")
+print("Data was recorded, thanks for using the program!")

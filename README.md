@@ -4,6 +4,5 @@ CLI interface to test your internet connection speed. Using Python 3 and speedte
 ## Dependencies
 - python3
 - speedtest-cli
+- pymongo
 
-### TODO
-- store results

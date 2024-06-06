@@ -4,8 +4,8 @@ import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-DB_USERNAME = config["database"]["USERNAME"]
-DB_PASSWORD = config["database"]["PASSWORD"]
+DB_USERNAME = config["database"]["USER_NAME"]
+DB_PASSWORD = config["database"]["USER_PASSWORD"]
 
 # import dependencies
 import speedtest

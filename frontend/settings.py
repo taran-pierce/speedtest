@@ -25,8 +25,6 @@ PROJECT_PATH = Path(f"{BASE_DIR}/frontend/templates")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-vz)djre2c^lpe5um0m9+amdks!q14m-a2pxe4ym!idt*tchdwl'
 SECRET_KEY = SECRET
 
 DEBUG = False

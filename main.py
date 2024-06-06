@@ -1,11 +1,6 @@
 # config data
-import configparser
-
-config = configparser.ConfigParser()
-config.read("config.ini")
-
-DB_USERNAME = config["database"]["USER_NAME"]
-DB_PASSWORD = config["database"]["USER_PASSWORD"]
+DB_USERNAME = os.getenv("USER_NAME")
+DB_PASSWORD = os.getenv("USER_PASSWORD")
 
 # import dependencies
 import speedtest

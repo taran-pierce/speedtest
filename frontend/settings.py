@@ -30,12 +30,9 @@ SECRET_KEY = SECRET
 
 DEBUG = False
 
-# TODO move these to config
-ALLOWED_HOSTS = [
-  "python-speedtest.azurewebsites.net",
-  "0.0.0.0:8000",
-  "127.0.0.1"
-]
+HOST_CONFIG = os.getenv("ALLOWED_HOSTS").split(",")
+
+ALLOWED_HOSTS = HOST_CONFIG
 
 # Application definition
 

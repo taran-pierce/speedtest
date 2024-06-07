@@ -6,10 +6,11 @@
     <title>{% block title %}Speed Test{% endblock %}</title>
   </head>
   <body>
-    {% include 'components/navigation.html' %}
+    {% include 'components/header.html' %}
     <main>
       {% block content %}
       {% endblock %}
     </main>
+    {% include 'components/footer.html' %}
   </body>
 </html>

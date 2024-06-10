@@ -1,9 +1,12 @@
+{% load static %}
 <!-- templates/base.html -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" \>
     <title>{% block title %}Speed Test{% endblock %}</title>
+    {% block head_scripts %}
+    {% endblock %}
   </head>
   <body>
     {% include 'components/header.html' %}

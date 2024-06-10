@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
 
+{% block head_scripts %}
+<script src="{% static 'js/disable_button.js' %}"></script>
+{% endblock %}
+
+
 {% block content %}
   <h1>Speed Test</h1>
+  <img src="{% static 'img/test.jpg' %}" alt="My image">
   <p>Basic webpage setup for speed test site.</p>
+  <form method="POST" action="{% url 'collect_speed_info' %}">
+    {% csrf_token %}
+    <button type="submit" id="button">Click me</button>
+  </form>
 {% endblock %}

@@ -138,6 +138,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://python-speedtest.azurewebsites.net'
 ]
 
-# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 # SESSION_COOKIE_SECURE = True
 # SECURE_SSL_REDIRECT = True

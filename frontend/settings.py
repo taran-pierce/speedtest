@@ -32,7 +32,8 @@ DEBUG = True
 
 HOST_CONFIG = os.getenv("ALLOWED_HOSTS").split(",")
 
-ALLOWED_HOSTS = HOST_CONFIG
+# ALLOWED_HOSTS = HOST_CONFIG
+ALLOWED_HOSTS = []
 
 # Application definition
 
